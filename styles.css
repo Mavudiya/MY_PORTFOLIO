@@ -2382,3 +2382,204 @@ img {
     justify-content: center;
   }
 }
+
+/* ===========================
+   MOBILE OPTIMIZATION PATCH
+   Paste at VERY bottom of styles.css
+   =========================== */
+
+/* Fix iOS/Android viewport "100vh" weirdness */
+:root {
+  --nav-h: 80px;
+}
+
+/* Prevent weird horizontal gaps */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---------- Tablets & below ---------- */
+@media (max-width: 768px) {
+
+  /* HERO: stop forcing 100vh (causes “half page empty” on phones) */
+  .hero {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: calc(var(--nav-h) + 16px) !important;
+    padding-bottom: 24px !important;
+  }
+
+  /* Use dynamic viewport when needed (safe) */
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 0 16px !important;
+  }
+
+  /* Remove desktop-only nowrap + big spacing */
+  .hero-title {
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-size: 2.2rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hero-description {
+    max-width: 100% !important;
+    margin-bottom: 16px !important;
+    font-size: 1rem !important;
+  }
+
+  /* Ensure the image block doesn’t create empty space */
+  .hero-image {
+    margin-top: 8px !important;
+  }
+
+  .profile-card {
+    width: min(320px, 92vw) !important;
+    height: min(320px, 92vw) !important;
+  }
+
+  .profile-photo {
+    width: calc(min(320px, 92vw) - 20px) !important;
+    height: calc(min(320px, 92vw) - 20px) !important;
+  }
+
+  /* GLOBAL SECTION SPACING: reduce the “half page padding” feel */
+  section {
+    padding: 56px 0 !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+    margin-bottom: 1.75rem !important;
+    padding: 0 10px;
+  }
+
+  /* ABOUT: tighten */
+  .about-text p {
+    font-size: 1.02rem !important;
+  }
+
+  .stat {
+    padding: 1.5rem !important;
+  }
+
+  /* EXPERIENCE: this is a big source of “empty” feeling */
+  .experience-hero {
+    padding: 24px !important;
+    gap: 20px !important;
+    grid-template-columns: 1fr !important;
+    margin-bottom: 20px !important;
+  }
+
+  .experience-content {
+    padding: 24px !important;
+  }
+
+  .role-title h2 {
+    font-size: 2.1rem !important;
+  }
+
+  .hero-stats {
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .stat-bubble {
+    padding: 14px !important;
+    min-width: 92px !important;
+  }
+
+  /* Orbit cards already switch to grid — just keep them compact */
+  .hero-visual {
+    height: auto !important;
+    padding: 12px !important;
+  }
+
+  /* PROJECTS: remove extra margins that look like “white bands” */
+  .projects-grid {
+    padding: 1.5rem 0 !important;
+    gap: 1.25rem !important;
+  }
+
+  .project-card {
+    margin: 0 0.5rem !important;
+  }
+
+  .project-image {
+    height: 160px !important;
+  }
+
+  .project-content {
+    padding: 1.25rem !important;
+  }
+
+  .project-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .project-link {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* CONTACT: prevent wide blank column */
+  .contact-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .social-links {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 480px) {
+
+  /* Even tighter spacing for small screens */
+  section {
+    padding: 46px 0 !important;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .profile-card {
+    width: min(300px, 92vw) !important;
+    height: min(300px, 92vw) !important;
+  }
+
+  .profile-photo {
+    width: calc(min(300px, 92vw) - 20px) !important;
+    height: calc(min(300px, 92vw) - 20px) !important;
+  }
+
+  .experience-hero,
+  .experience-content {
+    padding: 18px !important;
+  }
+
+  .project-content {
+    padding: 1.1rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

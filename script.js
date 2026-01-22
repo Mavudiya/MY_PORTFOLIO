@@ -283,3 +283,27 @@ backToTopBtn.addEventListener('mouseleave', () => {
     backToTopBtn.style.background = '#2563eb';
     backToTopBtn.style.transform = 'scale(1)';
 }); 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const els = document.querySelectorAll(".fade-in");
+
+  // If no fade-in elements, nothing to do
+  if (!els.length) return;
+
+  // Fallback: if IntersectionObserver isn't supported, just show everything
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  els.forEach(el => observer.observe(el));
+});

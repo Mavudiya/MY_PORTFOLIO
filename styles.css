@@ -2241,3 +2241,144 @@ section {
 html {
     scroll-padding-top: 80px;
 } 
+
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Make all images behave nicely */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Better tap behavior + no weird zoom */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Tablets & below ---------- */
+@media (max-width: 768px) {
+
+  /* HERO TITLE: remove nowrap (this is causing overflow on small screens) */
+  .hero-title {
+    white-space: normal !important;   /* IMPORTANT */
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.15;
+  }
+
+  /* Make sections less tall on mobile */
+  section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding: 0 10px;
+  }
+
+  /* HERO spacing */
+  .hero {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 30px;
+  }
+
+  .hero-container {
+    padding: 0 16px;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  /* Profile card/photo should scale instead of fixed 370px */
+  .profile-card {
+    width: min(340px, 92vw) !important;
+    height: min(340px, 92vw) !important;
+  }
+
+  .profile-photo {
+    width: calc(min(340px, 92vw) - 20px) !important;
+    height: calc(min(340px, 92vw) - 20px) !important;
+  }
+
+  /* Buttons: give more spacing on mobile */
+  .hero-buttons {
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 54px;
+    height: 54px;
+  }
+
+  /* Projects spacing */
+  .project-card {
+    margin: 0 0.75rem;
+  }
+
+  .project-content {
+    padding: 1.5rem;
+  }
+
+  .project-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .project-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Contact section should become 1 column */
+  .contact-content {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------- Small phones ---------- */
+@media (max-width: 480px) {
+
+  .hero-title {
+    font-size: 2.1rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  /* Reduce padding to avoid “half page” feel */
+  .project-content {
+    padding: 1.25rem;
+  }
+
+  /* Stat bubbles should fit cleanly */
+  .stat-bubble {
+    max-width: 240px;
+  }
+
+  /* Project tags wrap cleaner */
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+}
